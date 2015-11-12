@@ -11,16 +11,16 @@ angular.module('myApp', ['ui.router', 'templates'])
 					templateUrl: 'search/_home.html',
 					controller: 'SearchController',
 					// resolve: {
-					// 	objectPromise: ['objects', function(objects){
-					// 		return objects.getAll();
+					// 	savedObjectPromise: ['saved_objects', function(saved_objects){
+					// 		return saved_objects.getAll();
 					// 	}]
 					// }
 				})
 			/* dynamically created state depending on type of object selected (artist, album, label, etc.) */
 				.state('object', {
 					url: '/{type}/{id}',
-					templateUrl: 'objects/_objects.html',
-					controller: 'ObjectsController'
+					templateUrl: 'saved_objects/_objects.html',
+					controller: 'SavedObjectsController'
 				})
 			$urlRouterProvider.otherwise('home');
 		}])

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :sessions
 
-  resources :savedobjects, only: [:create, :index, :show] do
+  resources :saved_objects, only: [:create, :index, :show] do
     resources :reviews, only: [:show, :create] do
       member do
         # put '/upvote' => 'reviews#upvote'

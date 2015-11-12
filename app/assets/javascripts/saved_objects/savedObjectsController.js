@@ -7,19 +7,19 @@ angular.module('myApp')
 			savedobjects: []
 		};
 		o.getAll = function() {
-			return $http.get('/savedobjects.json').success(function(data){
+			return $http.get('/saved_objects.json').success(function(data){
 				angular.copy(data, o.savedobjects);
 			});
 		}
 		o.create = function(object) {
-			return $http.post('/savedobjects.json', object).success(function(data) {
+			return $http.post('/saved_objects.json', object).success(function(data) {
 				o.savedobjects.push(data);
 			});
 		};
 		return o;
 	}])
 
-	.controller('ObjectsController', [
+	.controller('savedObjectsController', [
 		'$scope',
 		'$stateParams',
 		'objects',
