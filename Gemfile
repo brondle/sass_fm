@@ -8,6 +8,10 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bcrypt-ruby'
+gem 'rest-client'
+gem 'angular-rails-templates'
+gem 'ngannotate-rails'
+gem 'responders', '~> 2.0'
 
 group :development do
   gem 'byebug'

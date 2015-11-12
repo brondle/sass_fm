@@ -1,0 +1,12 @@
+<script type="text/ng-template" id="/home.html">
+	<div class="page-header">
+		<h1>Sass FM</h1>
+		<div class="input-group search-bar">
+			<input type="text" ng-model="search" ng-change="change()" onclick="select()" class="form-control" placeholder="Enter search term here" autofocus>
+		</div>
+		<div id="main-info" ng-include=" 'partials/main-info.html' " class="col-md-8">
+		</div>
+		<div id="related-results" ng-include=" 'partials/related-results.html' " class="col-md-4">
+		</div>
+	</div>
+</script>
