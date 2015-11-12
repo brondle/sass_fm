@@ -2,19 +2,21 @@ angular.module('myApp')
 	.controller('SearchController', [
 	'$scope',
 	'$http',
-	'objects',
-	function($scope, $http, objects){
+	'savedobjects',
+	function($scope, $http, savedobjects){
 
 	var pendingTask;
 
-	$scope.objects = objects.objects;
+	$scope.savedobjects = savedobjects.savedobjects;
 
 
 	$scope.addObject = function() {
-		$scope.objects.push({
+		console.log("foo");
+		savedobjects.create({
 			title: $scope.details[0].title,
-			img: $scope.details[0].thumb,
-			id: $scope.details[0].id,
+			name: $scope.details[0].name,
+			thumb: $scope.details[0].thumb,
+			discogs_id: $scope.details[0].id,
 			type: $scope.details[0].type + "s",
 			reviews: [
 				{author: 'Bront', body: 'Whatever', upvotes: 0},
@@ -33,6 +35,7 @@ angular.module('myApp')
 	function fetch() {
 		$http.get("https://api.discogs.com/database/search?q=" + $scope.search + "&key=sgPQPSrsXwtszVQohmLS&secret=AkCvXlTSVACjBxuLHSKQteoeuFQFvZVY").success(function(response){
 		var output = response.results;
+		console.log
 		$scope.details = output;
 		$scope.dataType = output[0].type;
 		var related = output.slice(1, (output.length - 1));

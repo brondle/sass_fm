@@ -1,4 +1,24 @@
 angular.module('myApp')
+	.factory('savedobjects', [
+		'$http',
+		function($http){
+		/* store of favorite savedobjects */
+		var o = {
+			savedobjects: []
+		};
+		o.getAll = function() {
+			return $http.get('/savedobjects.json').success(function(data){
+				angular.copy(data, o.savedobjects);
+			});
+		}
+		o.create = function(object) {
+			return $http.post('/savedobjects.json', object).success(function(data) {
+				o.savedobjects.push(data);
+			});
+		};
+		return o;
+	}])
+
 	.controller('ObjectsController', [
 		'$scope',
 		'$stateParams',

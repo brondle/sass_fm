@@ -1,0 +1,8 @@
+<div class="container">
+	<div ng-if="results">
+		Related Results:
+		<li ng-repeat = "result in results">
+		<a href="/#/{{ result.type }}s/{{ result.id }}">	{{ result.title }} </a>
+		</li>
+	</div>
+</div>

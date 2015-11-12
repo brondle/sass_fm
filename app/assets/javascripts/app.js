@@ -9,18 +9,18 @@ angular.module('myApp', ['ui.router', 'templates'])
 				.state('home', {
 					url: '/home',
 					templateUrl: 'search/_home.html',
-					controller: 'SearchController'
+					controller: 'SearchController',
+					// resolve: {
+					// 	objectPromise: ['objects', function(objects){
+					// 		return objects.getAll();
+					// 	}]
+					// }
 				})
 			/* dynamically created state depending on type of object selected (artist, album, label, etc.) */
 				.state('object', {
 					url: '/{type}/{id}',
 					templateUrl: 'objects/_objects.html',
-					controller: 'ObjectsController',
-					resolve: {
-						objectPromise: ['objects', function(objects){
-							return objects.getAll();
-						}]
-					}
+					controller: 'ObjectsController'
 				})
 			$urlRouterProvider.otherwise('home');
 		}])

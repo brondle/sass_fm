@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   root to: 'application#angular'
   resources :users do
     resources :reviews
-    resources :albums
+    resources :savedobjects
   end
 
   resources :sessions
 
-  resources :objects, only: [:create, :index, :show] do
+  resources :savedobjects, only: [:create, :index, :show] do
     resources :reviews, only: [:show, :create] do
       member do
         # put '/upvote' => 'reviews#upvote'
