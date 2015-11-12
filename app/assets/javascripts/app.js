@@ -9,7 +9,7 @@ angular.module('myApp', ['ui.router', 'templates'])
 				.state('home', {
 					url: '/home',
 					templateUrl: 'search/_home.html',
-					controller: 'SearchController',
+					controller: 'SearchController'
 					// resolve: {
 					// 	savedObjectPromise: ['saved_objects', function(saved_objects){
 					// 		return saved_objects.getAll();

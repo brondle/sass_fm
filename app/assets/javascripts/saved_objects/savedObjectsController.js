@@ -1,33 +1,33 @@
 angular.module('myApp')
-	.factory('savedobjects', [
+	.factory('savedObjects', [
 		'$http',
 		function($http){
 		/* store of favorite savedobjects */
 		var o = {
-			savedobjects: []
+			savedObjects: []
 		};
 		o.getAll = function() {
 			return $http.get('/saved_objects.json').success(function(data){
-				angular.copy(data, o.savedobjects);
+				angular.copy(data, o.savedObjects);
 			});
 		}
 		o.create = function(object) {
 			return $http.post('/saved_objects.json', object).success(function(data) {
-				o.savedobjects.push(data);
+				o.savedObjects.push(data);
 			});
 		};
 		return o;
 	}])
 
-	.controller('savedObjectsController', [
+	.controller('SavedObjectsController', [
 		'$scope',
 		'$stateParams',
-		'objects',
+		'savedObjects',
 		'$http',
 		'$filter',
-		function($scope, $stateParams, objects, $http, $filter) {
+		function($scope, $stateParams, savedObjects, $http, $filter) {
 			/* check if object has been interacted with by users */
-			var objectStored = $filter('filter')(objects.objects, {id: $stateParams.id, type: $stateParams.type});
+			var objectStored = $filter('filter')(savedObjects.savedObjects, {id: $stateParams.id, type: $stateParams.type});
 
 			if( objectStored[0] != null ) {
 			$scope.object = objectStored[0];

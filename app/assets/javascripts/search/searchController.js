@@ -2,17 +2,16 @@ angular.module('myApp')
 	.controller('SearchController', [
 	'$scope',
 	'$http',
-	'savedobjects',
-	function($scope, $http, savedobjects){
+	'savedObjects',
+	function($scope, $http, savedObjects){
 
 	var pendingTask;
 
-	$scope.savedobjects = savedobjects.savedobjects;
+	$scope.savedobjects = savedObjects.savedObjects;
 
 
 	$scope.addObject = function() {
-		console.log("foo");
-		savedobjects.create({
+		savedObjects.create({
 			title: $scope.details[0].title,
 			name: $scope.details[0].name,
 			thumb: $scope.details[0].thumb,
