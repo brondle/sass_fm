@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>SassFm</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="myApp">
@@ -17,11 +17,16 @@
     <%= link_to 'Log In', login_path %>
     <% end %>
   </div>
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <ui-view></ui-view>
+  </div>
+</div>
 
   <noscript>
     <div class="nojs">Javascript is either disabled or not supported in your browser. Please enable it or use a Javascript enabled browser.</div>
   </noscript>
-  <ui-view></ui-view>
+
 
 </body>
 </html>

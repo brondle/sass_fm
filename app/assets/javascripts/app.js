@@ -15,7 +15,12 @@ angular.module('myApp', ['ui.router', 'templates'])
 				.state('object', {
 					url: '/{type}/{id}',
 					templateUrl: 'objects/_objects.html',
-					controller: 'ObjectsController'
+					controller: 'ObjectsController',
+					resolve: {
+						objectPromise: ['objects', function(objects){
+							return objects.getAll();
+						}]
+					}
 				})
 			$urlRouterProvider.otherwise('home');
 		}])

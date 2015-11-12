@@ -12,6 +12,7 @@ gem 'rest-client'
 gem 'angular-rails-templates'
 gem 'ngannotate-rails'
 gem 'responders', '~> 2.0'
+gem 'sprockets', '2.12.3'
 
 group :development do
   gem 'byebug'
