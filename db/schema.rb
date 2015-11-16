@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116193331) do
+ActiveRecord::Schema.define(version: 20151116200912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(version: 20151116193331) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "saved_object_id"
+    t.integer  "user_id"
   end
+
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "saved_objects", force: :cascade do |t|
     t.string   "name"
@@ -32,7 +35,10 @@ ActiveRecord::Schema.define(version: 20151116193331) do
     t.string   "thumb"
     t.integer  "discogs_id"
     t.string   "type"
+    t.integer  "user_id"
   end
+
+  add_index "saved_objects", ["user_id"], name: "index_saved_objects_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -52,4 +58,6 @@ ActiveRecord::Schema.define(version: 20151116193331) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "reviews", "users"
+  add_foreign_key "saved_objects", "users"
 end

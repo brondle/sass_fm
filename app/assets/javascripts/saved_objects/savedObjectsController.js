@@ -39,7 +39,8 @@ angular.module('myApp')
 			});
 		}
 		$scope.getPartial = function() {
-			if ($stateParams.type === ("releases" || "masters")) {
+			console.log($stateParams.type)
+			if ($stateParams.type === "releases" || $stateParams.type === "masters") {
 				return "partials/album.html"
 			} else if ($stateParams.type === "artists") {
 				return "partials/artist.html"

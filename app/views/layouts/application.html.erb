@@ -7,15 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="myApp">
-  <%= flash[:notice] %>
-  <div id="navbar">
-    <% if current_user %>
-      Logged in as <%= current_user.email %>
-      <%=  link_to("Log Out", logout_path) %>
-    <% else %>
-    <%= link_to 'Sign Up', signup_path %>
-    <%= link_to 'Log In', login_path %>
-    <% end %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <div class="col-md-6 col-md-offset-3">
+    <div ng-include="'nav/_nav.html'"></div>
   </div>
   <div class="row">
   <div class="col-md-6 col-md-offset-3">

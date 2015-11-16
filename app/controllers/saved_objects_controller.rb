@@ -1,10 +1,11 @@
 class SavedObjectsController < ApplicationController
+	before_filter :authenticate_user!, only: [:create]
 def index
 	respond_with SavedObject.all
 end
 
 def create
-	SavedObject.create(saved_object_params)
+	SavedObject.create(saved_object_params.merge(user_id: current_user.id))
 	redirect_to '/'
 end
 
