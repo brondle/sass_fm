@@ -2,7 +2,7 @@ angular.module('myApp')
 	.factory('savedObjects', [
 		'$http',
 		function($http){
-		/* store of favorite savedobjects */
+		/* store of favorite objects */
 		var o = {
 			savedObjects: []
 		};
@@ -13,6 +13,7 @@ angular.module('myApp')
 		}
 		o.create = function(object) {
 			return $http.post('/saved_objects.json', object).success(function(data) {
+				console.log(data);
 				o.savedObjects.push(data);
 			});
 		};
@@ -35,7 +36,6 @@ angular.module('myApp')
 			/* if not, render page using API info */
 			$http.get("https://api.discogs.com/"+ $stateParams.type + "/" + $stateParams.id).success(function(response){
 			$scope.object = response;
-			console.log(response);
 			});
 		}
 		$scope.getPartial = function() {

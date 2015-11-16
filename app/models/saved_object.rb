@@ -6,3 +6,12 @@ class SavedObject < ActiveRecord::Base
 		super(options.merge(include: :reviews))
 	end
 end
+
+class Artist < SavedObject
+end
+
+class Album < SavedObject
+end
+
+class Label < SavedObject
+end

@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users do
+    resources :reviews
+    resources :savedobjects
+  end
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   root to: 'application#angular'
-  resources :users do
-    resources :reviews
-    resources :savedobjects
-  end
-
   resources :sessions
 
   resources :saved_objects, only: [:create, :index, :show] do

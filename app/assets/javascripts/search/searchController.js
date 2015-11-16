@@ -9,19 +9,26 @@ angular.module('myApp')
 
 	$scope.savedobjects = savedObjects.savedObjects;
 
+	function capitalize(s)
+		{
+		    return s[0].toUpperCase() + s.slice(1);
+		}
 
 	$scope.addObject = function() {
+		console.log($scope.details[0]);
 		savedObjects.create({
 			title: $scope.details[0].title,
 			name: $scope.details[0].name,
+			artist: $scope.details[0].artist,
 			thumb: $scope.details[0].thumb,
 			discogs_id: $scope.details[0].id,
-			type: $scope.details[0].type + "s",
+			type: capitalize($scope.details[0].type),
 			reviews: [
 				{author: 'Bront', body: 'Whatever', upvotes: 0},
 				{author: 'Brandt', body: 'I love it', upvotes: 0}
 			]
 		});
+		console.log(savedObjects.savedObjects);
 	};
 
 	$scope.change = function(){
@@ -34,7 +41,6 @@ angular.module('myApp')
 	function fetch() {
 		$http.get("https://api.discogs.com/database/search?q=" + $scope.search + "&key=sgPQPSrsXwtszVQohmLS&secret=AkCvXlTSVACjBxuLHSKQteoeuFQFvZVY").success(function(response){
 		var output = response.results;
-		console.log
 		$scope.details = output;
 		$scope.dataType = output[0].type;
 		var related = output.slice(1, (output.length - 1));

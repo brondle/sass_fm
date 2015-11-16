@@ -14,6 +14,7 @@ gem 'ngannotate-rails'
 gem 'responders', '~> 2.0'
 gem 'sprockets', '2.12.3'
 gem 'angular_rails_csrf'
+gem 'devise'
 
 group :development do
   gem 'byebug'
