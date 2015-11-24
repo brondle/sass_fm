@@ -1,9 +1,16 @@
 angular.module('myApp')
 	.factory('Library', [
 		'$resource',
-		function($resource){
+		'$stateParams',
+		function($resource, $stateParams){
 			/*gets all saved objects */
-		return	$resource('/saved_objects/:user_id');
+			console.log($stateParams.id);
+		var library =	$resource('/users/' + $stateParams.id + ' /saved_objects', {
+			update: {
+				method: 'PUT'
+			}
+		});
+		return library;
 		}
 	])
 	.controller('UserLibraryController', [
@@ -16,7 +23,10 @@ angular.module('myApp')
 			/* get current user from devise */
 			Auth.currentUser().then(function(user){
 				$scope.user = user;
-				console.log(Library.query());
+				/*get library from factory */
+			var library = Library.query(function() {
+				console.log(library);
+			});
 			});
 			// var user = users.users[$stateParams.id];
 			// $scope.user = user;

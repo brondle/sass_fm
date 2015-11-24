@@ -1,7 +1,7 @@
 class SavedObjectsController < ApplicationController
 	before_filter :authenticate_user!, only: [:create]
 def index
-	respond_with SavedObject.all
+	respond_with SavedObject.find_by user_id: params[:user_id]
 end
 
 def create

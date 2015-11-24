@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   root to: 'application#angular'
   resources :sessions
   resources :users do
-      resources :reviews
-      resources :saved_objects
+      resources :reviews, defaults: {format: 'json'}
+      resources :saved_objects, defaults: {format: 'json'}
   end
   resources :saved_objects, defaults: {format: 'json'}, only: [:create, :index, :show] do
-    resources :reviews, only: [:show, :create] do
+    resources :reviews, defaults: {format: 'json'}, only: [:show, :create] do
       member do
         # put '/upvote' => 'reviews#upvote'
       end
