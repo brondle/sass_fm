@@ -28,7 +28,6 @@ angular.module('myApp')
 				{author: 'Brandt', body: 'I love it', upvotes: 0}
 			]
 		});
-		console.log(savedObjects.savedObjects);
 	};
 
 	$scope.change = function(){

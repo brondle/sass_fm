@@ -1,6 +1,7 @@
 class SavedObject < ActiveRecord::Base
 	has_many :reviews
-	has_and_belongs_to_many :users
+	# has_and_belongs_to_many :users
+	belongs_to :user
 
 	def as_json(options = {})
 		super(options.merge(include: [:user, reviews: {include: :user}]))

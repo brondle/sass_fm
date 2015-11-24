@@ -5,10 +5,9 @@ angular.module('myApp')
 		function($scope, Auth){
 			$scope.signedIn = Auth.isAuthenticated;
 			$scope.logout = Auth.logout;
-			console.log($scope.user);
-			// Auth.currentUser().then(function (user) {
-			// 	$scope.user = user;
-			// });
+			Auth.currentUser().then(function (user) {
+				$scope.user = user;
+			});
 
 			$scope.$on('devise:new-registration', function(e, user){
 				// console.log("foo");
@@ -16,7 +15,6 @@ angular.module('myApp')
 			});
 
 			$scope.$on('devise:login', function (e, user) {
-				console.log("foo");
 				$scope.user = user;
 			});
 

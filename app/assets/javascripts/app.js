@@ -22,6 +22,11 @@ angular.module('myApp', ['ui.router', 'templates', 'Devise'])
 					templateUrl: 'saved_objects/_objects.html',
 					controller: 'SavedObjectsController'
 				})
+				.state('library', {
+					url: '/users/{id}/library',
+					templateUrl: 'users/_userLibrary.html',
+					controller: 'UserLibraryController'
+				})
 				.state('login', {
 					url: '/login',
 					templateUrl: 'auth/_login.html',

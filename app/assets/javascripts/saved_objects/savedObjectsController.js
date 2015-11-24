@@ -13,10 +13,10 @@ angular.module('myApp')
 		}
 		o.create = function(object) {
 			return $http.post('/saved_objects.json', object).success(function(data) {
-				console.log(data);
 				o.savedObjects.push(data);
 			});
 		};
+		console.log(o.savedObjects);
 		return o;
 	}])
 
