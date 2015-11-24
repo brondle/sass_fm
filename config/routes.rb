@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       resources :reviews
       resources :saved_objects
   end
-  resources :saved_objects, only: [:create, :index, :show] do
+  resources :saved_objects, defaults: {format: 'json'}, only: [:create, :index, :show] do
     resources :reviews, only: [:show, :create] do
       member do
         # put '/upvote' => 'reviews#upvote'

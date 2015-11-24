@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp', ['ui.router', 'templates', 'Devise'])
+angular.module('myApp', ['ui.router', 'templates', 'Devise', 'ngResource'])
 	.config([
 		'$stateProvider',
 		'$urlRouterProvider',
