@@ -15,14 +15,14 @@ angular.module('myApp')
 		}
 
 	$scope.addObject = function() {
-		console.log($scope.details[0]);
+		result = $scope.details[0];
+		console.log(result.type);
 		savedObjects.create({
-			title: $scope.details[0].title,
-			name: $scope.details[0].name,
-			artist: $scope.details[0].artist,
-			thumb: $scope.details[0].thumb,
-			discogs_id: $scope.details[0].id,
-			type: capitalize($scope.details[0].type),
+			title: result.title,
+			artist: result.artist,
+			thumb: result.thumb,
+			discogs_id: result.id,
+			object_type: result.type,
 			reviews: [
 				{author: 'Bront', body: 'Whatever', upvotes: 0},
 				{author: 'Brandt', body: 'I love it', upvotes: 0}
@@ -41,6 +41,7 @@ angular.module('myApp')
 		$http.get("https://api.discogs.com/database/search?q=" + $scope.search + "&key=sgPQPSrsXwtszVQohmLS&secret=AkCvXlTSVACjBxuLHSKQteoeuFQFvZVY").success(function(response){
 		var output = response.results;
 		$scope.details = output;
+		console.log(output[0].type);
 		$scope.dataType = output[0].type;
 		var related = output.slice(1, (output.length - 1));
 		$scope.results = related;

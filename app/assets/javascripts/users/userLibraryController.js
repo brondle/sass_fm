@@ -4,13 +4,12 @@ angular.module('myApp')
 		'$stateParams',
 		function($resource, $stateParams){
 			/*gets all saved objects */
-			console.log($stateParams.id);
-		var library =	$resource('/users/' + $stateParams.id + ' /saved_objects', {
-			update: {
-				method: 'PUT'
-			}
-		});
-		return library;
+			var library =	$resource('/users/' + $stateParams.id + '/saved_objects', {
+				update: {
+					method: 'PUT'
+				},
+			});
+			return library;
 		}
 	])
 	.controller('UserLibraryController', [
@@ -24,13 +23,12 @@ angular.module('myApp')
 			Auth.currentUser().then(function(user){
 				$scope.user = user;
 				/*get library from factory */
-			var library = Library.query(function() {
-				console.log(library);
+				var library = Library.query(function() {
+					library.$save;
+					$scope.library = library;
+					console.log(library);
+				});
 			});
-			});
-			// var user = users.users[$stateParams.id];
-			// $scope.user = user;
-			// console.log(user);
 
 		}
 	])

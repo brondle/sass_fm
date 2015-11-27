@@ -39,7 +39,6 @@ angular.module('myApp')
 			});
 		}
 		$scope.getPartial = function() {
-			console.log($stateParams.type)
 			if ($stateParams.type === "releases" || $stateParams.type === "masters") {
 				return "partials/album.html"
 			} else if ($stateParams.type === "artists") {
